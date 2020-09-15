@@ -1,0 +1,14 @@
+html
+    body   
+            div(class="row" id="parent")
+                - var count=0;
+                each product in products                
+                 div(class="col-sm-4" id="phone"+ ++count)
+                    img(class="image" src=product.url)
+                    hr
+                    a(href="/product/"+product._id)=product.name
+                    h4= product.price
+                    
+  
+            
+            

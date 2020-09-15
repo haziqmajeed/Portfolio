@@ -1,0 +1,36 @@
+<script src="https://kit.fontawesome.com/1fd56674b5.js" crossorigin="anonymous"></script>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">Shopixy</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      if user
+        <li class="nav-item active">
+          <a class="nav-link" href="/logout">Logout <span class="sr-only">(current)</span></a>
+        </li>
+      <li class="nav-item dropdown">
+        if !user
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Member</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/login">Log In</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/register">Register Here</a>
+        </div>
+      </li>
+     
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" id="searchBar" type="search" placeholder="Search" aria-label="Search">
+      <div class="wrapper">
+        <a class="nav-link" href="/cart"><i class="fa" style="font-size:30px">&#xf07a;</i></a>
+      <span id="MyCart"> </span>
+    </form>
+  </div>
+</nav>

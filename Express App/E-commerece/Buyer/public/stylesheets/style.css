@@ -1,0 +1,33 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: linear-gradient(to right, white, rgb(42, 42, 29));
+}
+nav{
+  background-image: linear-gradient(to right, rgb(248, 232, 232), rgb(54, 37, 37));
+}
+
+a {
+  color: #00B7FF;
+}
+#innerImage {
+  border: 3px solid rgb(216, 128, 128);
+  border-radius: 4px;
+  max-width: 50%;
+  
+}
+
+img{
+  max-width: 50%;
+}
+
+.wrapper{
+  position: relative;
+  }
+  .wrapper span{
+  position: absolute;
+  top: -5px;
+  right: 23px;
+  color: Yellow;
+  font-size:20px;
+  }

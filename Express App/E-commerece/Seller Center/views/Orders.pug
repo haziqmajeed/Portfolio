@@ -1,0 +1,23 @@
+extends layout
+block content
+    h1 My Orders
+    table.table
+        thead
+            th Product Name
+            th Price
+            th Buyer Name
+            th Contact
+            th Address
+            th Action
+        tbody
+            each item in order
+              tr  
+                td=item.name
+                td $#{item.price}
+                td=item.BuyerName
+                td=item.contact
+                td=item.address
+                td
+                  a(class="btn btn-success" href="/OrderDelete/"+item._id) Delivered
+                  a(class="btn btn-danger" href="/OrderDelete/"+item._id) Cancel
+            

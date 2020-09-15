@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+    h1 Add new Products
+    form(action="/products/add", method="post")
+        .form-group
+            label(for="url") Product Image url
+            input#url(type="text",class="form-control",name="url",placeholder="Enter Product Url here", required)
+        .form-group
+            label(for="name") Product Name
+            input#name(type="text",class="form-control",name="name",placeholder="Enter Product Name here", required)
+        .form-group
+            label(for="price") Product Price
+            input#price(type="text",class="form-control",name="price",placeholder="Enter Product Price here", required)
+        .form-group
+            label(for="ram") Product Ram
+            input#ram(type="text",class="form-control",name="ram",placeholder="Enter Product Ram here", required)
+        .form-group
+            label(for="memory") Product Memory
+            input#memory(type="text",class="form-control",name="memory",placeholder="Enter Product Memory here", required)
+        input(type="submit", class="btn btn-info")

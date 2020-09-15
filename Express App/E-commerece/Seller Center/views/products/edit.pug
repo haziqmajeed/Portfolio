@@ -1,0 +1,20 @@
+extends ../layout
+
+block content
+    .row
+        .col-sm-12
+            h1=title
+    table.table 
+        thead
+            tr
+                th name
+                th price
+                th Actions
+        tbody
+            each product in products
+                tr
+                    td=product.name
+                    td=product.price
+                    td
+                        a(href="/products/delete/"+product._id , class="btn btn-danger") Delete
+                        a(href="/products/update/"+product._id , class="btn btn-primary") Update

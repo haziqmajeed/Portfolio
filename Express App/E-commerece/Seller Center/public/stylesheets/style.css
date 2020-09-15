@@ -1,0 +1,52 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+.seller{
+  background-color: #00B7FF;
+}
+a {
+  color: #00B7FF;
+}
+#data{
+  text-align: center;
+}
+#data h6{
+  text-justify: inter-cluster;
+}
+.add{
+  float: right;
+  margin-right: 5%;
+}
+#navdata{
+  margin-bottom: 5%;
+  margin-top: 3%;
+}
+.seller{
+  float: right;
+}
+.carousel-item img{
+    width: auto;
+    height: 500px; 
+}
+.popcategoryList a{
+    color: black;
+    text-decoration: none;
+    position: relative;  
+    transition: 0.3s all;
+    padding-top: 5px; 
+}
+.popcategoryList ul{
+    padding-top: 1%;
+}
+.popcategoryList li{
+    position: relative;
+    display:Inline;
+    list-style-type: none;
+    margin:8px;
+    font-size:25px;
+    text-rendering: auto;
+}
+.popcategoryList a:hover{
+    border-bottom: 2px solid red;
+}

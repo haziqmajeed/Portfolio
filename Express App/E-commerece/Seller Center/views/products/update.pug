@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+    h1 update new Products
+    form(action="/products/update/"+product._id, method="post")
+        .form-group
+            label(for="url") Product url
+            input#url(type="text",class="form-control",name="url" , value= product.url)
+        .form-group
+            label(for="name") Product Name
+            input#name(type="text",class="form-control",name="name" , value= product.name)
+        .form-group
+            label(for="price") Product Price
+            input#price(type="text",class="form-control",name="price" , value= product.price)
+        .form-group
+            label(for="ram") Product Ram
+            input#ram(type="text",class="form-control",name="ram" , value= product.ram)
+        .form-group
+            label(for="memory") Product Memory
+            input#memory(type="text",class="form-control",name="memory" , value= product.memory)
+        input(type="Submit", class="btn btn-info" value="Update")

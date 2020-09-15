@@ -1,0 +1,15 @@
+extends ../layout
+block content
+
+    h1 My Shipping Address
+    form(action="/ShippingForm" ,method="post")
+        .form-group
+            label(form="name") Name
+            input(type="text" ,class="form-control",name="BuyerName")
+        .form-group
+            label(for="contact") Contact
+            input(type="text" ,class="form-control",name="contact")
+        .form-group
+            label(for="address") Shipping Address
+            textarea(name="address", cols="30", rows="6",class="form-control")
+            button(type="submit", class="submit btn btn-primary" value="SignUp") Payment

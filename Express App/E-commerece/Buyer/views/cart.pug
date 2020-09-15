@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  h1 My shopping Cart
+  - var total=0;
+    table(class="table" id="myTable")
+      thead
+        th Name
+        th Price
+        th Actions
+      tbody
+        each item in tempCart
+          if item == 'undefined'
+            - continue
+          - total += Number(item.price)
+          tr
+            td=item.name
+            td=item.price
+            td
+              a(href="/remove/"+item._id, class="btn btn-danger") Delete
+      tfoot
+        tr
+          td Total
+          td=total
+          
+            
+    .row
+    hr(style="background-color:Orange")
+    h1 Purchase Now
+    br
+    a(href="/ShippingForm" class="btn btn-success") CheckOut
+             
