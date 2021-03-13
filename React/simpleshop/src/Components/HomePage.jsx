@@ -49,7 +49,9 @@ const HomePage = (props) => {
 
     return ( <div>
         <h1>HomePage</h1>
-        {products.length === 0 ? (<div>No products</div>):(<Grid container spacing={1}>
+		
+        {products.length === 0 ? (<div>No products</div>):
+		(<Grid container spacing={1}>
             {products.map( (product,index) => (
                 <DisplayProduct key={index} product={product} onDelete={getData} props={props}/>
          ))}
