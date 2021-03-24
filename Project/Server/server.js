@@ -77,7 +77,7 @@ peers.on('connection', socket => {
 
   socket.on('attentiveParticipant', (data) => {
     console.log(data)
-    const user = getUser(data.adminId);  
+    const user = getUser(data.adminId);  // sirf admin ko send krnay ke kon se partcipant active hain
     user.socket.emit('recieveAttentiveParticipant',{participantId:data.id,participantName:data.name})                                    // return to admin now
     
   })
