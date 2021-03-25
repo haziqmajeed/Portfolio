@@ -10,6 +10,8 @@ import Vids from './Videos/Vids'
 import queryString from 'query-string';
 import Host from './Videos/Host';
 import Popup from './Popup/Popup';
+import { green, red } from '@material-ui/core/colors';
+import { Button, withStyles } from '@material-ui/core';
 class Room extends Component {
   constructor(props) {
     super(props)
@@ -17,6 +19,11 @@ class Room extends Component {
     this.state = {
       localStream: null,    
       videoStream:null,
+
+      stopCapture:null,
+      
+      startCapture:null,
+
       screenShare:null,
 
       peerConnections: {},     
@@ -47,16 +54,24 @@ class Room extends Component {
     }
 
    
-    this.serviceIP = 'https://c8416fb8456f.ngrok.io/webrtcPeer'
+    this.serviceIP = 'https://6d7750f22129.ngrok.io/webrtcPeer' // change with ngrok to use application on other devices
     this.socket = null
-   this.admin=null;
+    this.admin=null;
     this.room = null;
     this.name = null;
     this.timeOut=null;
     this.pc=null;
-   
+    this.screenShare=null;
+
+
+
+    
+  
     
   }
+
+
+  
 
   handleChange = (adminData) => {
     if (this.timeOut) {
@@ -74,19 +89,67 @@ class Room extends Component {
   }
 
   getLocalStream = () => {
+
+    
+
+    
   
     const successVideo = (stream) => {
       stream.getVideoTracks()[0].enabled = false; // by default local stream camera and mic is off
       stream.getAudioTracks()[0].enabled = false;
     
+      
+
+      if (this.state.screenShare){
+        let videoTrack = stream.getVideoTracks()[0];
+        for (var connection in this.state.peerConnections){
+          var sender = this.state.peerConnections[connection].getSenders()
+          var test = sender.find(function(s) {
+            return s.track.kind == videoTrack.kind;
+          });
+          test.replaceTrack(videoTrack);
+        }
+  
+      }
+
+      if(!this.state.screenShare){ //check that screen share is on or off if on then don't run this function for peers
+        console.log("whoISONLINE")
+      this.whoisOnline()
+    }
+//just button styling
+    const ColorButton = withStyles((theme) => ({
+      root: {
+        color: theme.palette.getContrastText(green[500]),
+        backgroundColor: green[500],
+        "&:hover": {
+          backgroundColor: green[700]
+        }
+      }
+    }))(Button);
+    //just button styling
+    
       this.setState({
         videoStream:true,
         screenShare:false,
+        startCapture:<ColorButton 
+        variant="contained"
+        color="primary" 
+    
+        onClick={()=>{this.getScreenShare()}} 
+        
+        >Screen Share
+        
+        
+        
+        </ColorButton>,
+        stopCapture:null,
         localStream: stream
       })
 
-      this.whoisOnline()
-    }
+
+
+      
+  }
 
   
     const failureVideo = (e) => {
@@ -115,20 +178,61 @@ class Room extends Component {
 
   }
 
+//StopScreenSharing
+
+
+stopScreenShare= () =>{
+
+  this.getLocalStream()
+
+  
+}
+
+
+
+
+
+
+//screensharing
   getScreenShare = () => 
-  { //COMPUTER IS STRUCKED AFTER SCREENSHARING
-    console.log("ScreenSHare")
+  { //COMPUTER SCREENSHARING but work on multiple on computer
+    //same computer can't share 2 screens
+
+
+    //just button styling
+    const ColorButton = withStyles((theme) => ({
+      root: {
+        color: theme.palette.getContrastText(red[500]),
+        backgroundColor: red[500],
+        "&:hover": {
+          backgroundColor: red[700]
+        }
+      }
+    }))(Button);
+    //just button styling use
+
+
     const successScreen = (stream) => {
-      console.log("ScreenSHare")
       this.setState({
         videoStream:false,
         screenShare:true,
+        startCapture:null,
+        stopCapture:<ColorButton  
+        
+        variant="contained"
+        color="Secondary" 
+        onClick={()=>{this.stopScreenShare()}}>
+         
+         
+          Stop Capture
+          
+          
+          </ColorButton>,
         localStream: stream
       })
 
       let videoTrack = stream.getVideoTracks()[0];
       for (var connection in this.state.peerConnections){
-        console.log("ScreenSHare")
         var sender = this.state.peerConnections[connection].getSenders()
         var test = sender.find(function(s) {
           return s.track.kind == videoTrack.kind;
@@ -150,40 +254,20 @@ class Room extends Component {
         mirror: true,
       }
     }
+   
+     
       navigator.mediaDevices.getDisplayMedia(constraints)
       .then(successScreen)
       .catch(failureScreen)
+    
+   
+
+     
+     
+    
   }
-
-
-//   componentDidUpdate(){
-
-//   if (this.state.screenShare){
-//     let videoTrack = this.state.localStream.getVideoTracks()[0];
-
-//     for (var connection in this.state.peerConnections){
-//       var sender = this.state.peerConnections[connection].getSenders()
-//       var test = sender.find(function(s) {
-//         return s.track.kind == videoTrack.kind;
-//       });
-//       test.replaceTrack(videoTrack);
-//     }
-  
-//   }
-
-
-// }
-
-
-
-
-
   whoisOnline = () => {
     this.socket.emit('onlinePeers', {id:this.socket.id,room:this.room,name:this.name})
-
-    
-
-
   }
 
 
@@ -477,7 +561,8 @@ this.socket.on('recieveAttentiveParticipant', data => {
     return (
       <div>
         <Host localStream={this.state.localStream} myName={this.name} admin={this.admin} connection={this.socket} room={this.room} showMuteControls={true}/>         
-       <button onClick={()=>{this.getScreenShare()}} >screenShare</button>
+        {this.state.startCapture}
+         {this.state.stopCapture}
         <Vids remoteStreams={this.state.remoteStreams}/>
         {this.state.attention}
       </div>
