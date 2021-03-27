@@ -18,6 +18,9 @@ class Room extends Component {
 
     this.state = {
       localStream: null,    
+
+      attendanceTime:null,
+
       videoStream:null,
 
       stopCapture:null,
@@ -54,7 +57,7 @@ class Room extends Component {
     }
 
    
-    this.serviceIP = 'https://6d7750f22129.ngrok.io/webrtcPeer' // change with ngrok to use application on other devices
+    this.serviceIP = 'http://localhost:8080/webrtcPeer' // change with ngrok to use application on other devices
     this.socket = null
     this.admin=null;
     this.room = null;
@@ -70,12 +73,19 @@ class Room extends Component {
     
   }
 
+  inactiveParticipant = () => {
+    this.setState({
+      attentiveParticipant:[],
+    })
+  }
 
   
 
   handleChange = (adminData) => {
+    
     if (this.timeOut) {
-      clearTimeout(this.timeOut) // clearing time out here if user press ok
+      console.log("this.timeOut",this.timeOut)
+      clearTimeout(this.timeOut) // clearing time out here if user press Active!
       this.timeOut = null
     }
 
@@ -113,7 +123,7 @@ class Room extends Component {
       }
 
       if(!this.state.screenShare){ //check that screen share is on or off if on then don't run this function for peers
-        console.log("whoISONLINE")
+       // because peers are already connected we just need to replace the track
       this.whoisOnline()
     }
 //just button styling
@@ -273,15 +283,16 @@ stopScreenShare= () =>{
 
   createPeerConnection = (socketID,name,type, callback) => {
   
-
+    if (!this.admin) //checking agr admin nhi to mera attendance time check kro
+      this.socket.emit('getTime', {room:this.room})
 
     try {
-      console.log("creating pc ",socketID)
+      
       this.pc = new RTCPeerConnection(this.state.pc_config)
       
 
     
-      console.log("set pc ")
+     
       this.setState({
         peerConnections:{ ...this.state.peerConnections, [socketID]: this.pc }
       })
@@ -298,13 +309,13 @@ stopScreenShare= () =>{
       
 
       this.pc.ontrack = (e) => {    
-        console.log("ONTRACk")
+       
         // this.state.localStream.getVideoTracks()[0].enabled = false;
         
         let _remoteStream = null
         let remoteStreams = this.state.remoteStreams
         let remoteVideo = {}
-        let rtpSender=null;
+       
 
         //checking if already exist stream
         const rVideos = this.state.remoteStreams.filter(stream => stream.id === socketID)
@@ -312,8 +323,8 @@ stopScreenShare= () =>{
      
         if (rVideos.length) { // agr stream phlay se ha to sirf audio track add kr do otherwise run else part and create new
           _remoteStream = rVideos[0].stream
-          rtpSender = _remoteStream.addTrack(e.track, _remoteStream)
-          console.log("rtpSender:",rtpSender)
+         _remoteStream.addTrack(e.track, _remoteStream)
+          
           remoteVideo = {
             ...rVideos[0],
             stream: _remoteStream,
@@ -324,8 +335,8 @@ stopScreenShare= () =>{
         } else {
           
           _remoteStream = new MediaStream()
-          rtpSender = _remoteStream.addTrack(e.track, _remoteStream)
-          console.log("rtpSender:",rtpSender)
+          _remoteStream.addTrack(e.track, _remoteStream)
+          
 
           remoteVideo = {
             id: socketID,
@@ -351,6 +362,9 @@ stopScreenShare= () =>{
             }
           })
 
+         
+            
+
 
 
       }
@@ -365,7 +379,7 @@ stopScreenShare= () =>{
       }
 
       if (this.state.localStream)
-        console.log("LOCALSTREAM IF")
+       
         this.pc.addStream(this.state.localStream)
 
      
@@ -381,7 +395,7 @@ stopScreenShare= () =>{
 
 
   componentDidMount = () => {
-    console.log("SOCKET CREATED");
+   
 
     this.socket = io(
       this.serviceIP, // used local host address
@@ -398,6 +412,11 @@ this.socket.on('recieveAttentiveParticipant', data => {
     id: data.participantId,
     name:data.participantName,
   }
+  
+
+ 
+  
+  
 
   this.setState(prevState => {
 
@@ -409,9 +428,19 @@ this.socket.on('recieveAttentiveParticipant', data => {
       ...participant,
       attentiveParticipant: [...prevState.attentiveParticipant, tempParticipant]
     }
+
+    
   })
 // here create a file for attentive participant
-  console.log("attentiveParticipant:",this.state.attentiveParticipant)
+
+  
+})
+
+this.socket.on('recieveTime', data => { 
+  this.setState({
+    attendanceTime:data.miniute
+  })
+  console.log("data:",this.state.attendanceTime)
 })
 
 
@@ -455,8 +484,9 @@ this.socket.on('recieveAttentiveParticipant', data => {
       this.socket.on('admin', data => {
         if(data==="admin"){
           this.admin=true;
-          console.log("AMADMIN")
+       
         }
+        
 
       })
 
@@ -466,12 +496,14 @@ this.socket.on('recieveAttentiveParticipant', data => {
 
       
       
-
+ 
       
     })
 
+   
+
     this.socket.on('peer-disconnected', data => {
-      console.log('peer-disconnected', data)
+   
 
 
       const remoteStreams = this.state.remoteStreams.filter(stream => stream.id !== data.socketID)
@@ -501,7 +533,7 @@ this.socket.on('recieveAttentiveParticipant', data => {
             pc.createOffer(this.state.sdpConstraints)
               .then(sdp => {
                 pc.setLocalDescription(sdp)
-                console.log("Sending offer")
+              
                 this.socket.emit('offer',{sdp,local:this.socket.id,remote:data.id,name:this.name}) // inform 1st one here
           })
         }
@@ -521,7 +553,7 @@ this.socket.on('recieveAttentiveParticipant', data => {
           pc.createAnswer(this.state.sdpConstraints)
             .then(sdp => {
               pc.setLocalDescription(sdp)
-              console.log("Sending Answer")
+           
               this.socket.emit('answer',{sdp,local:this.socket.id,remote:data.socketID})
             })
         })
@@ -532,13 +564,13 @@ this.socket.on('recieveAttentiveParticipant', data => {
 
 
       const pc = this.state.peerConnections[data.socketID]
-  console.log("recieving Answer")
+
       pc.setRemoteDescription(new RTCSessionDescription(data.sdp)).then(()=>{})
     })
 
     this.socket.on('candidate', (data) => {
       const pc = this.state.peerConnections[data.local]
-      console.log("IceCandid ")
+     
       if (pc)
         pc.addIceCandidate(new RTCIceCandidate(data.candidate))
     })
@@ -549,21 +581,23 @@ this.socket.on('recieveAttentiveParticipant', data => {
 
   }
 
- 
+  
 
   
 
   render() {
-    console.log("Trigger:",this.state.trigger)
-    console.log("PeerConnections:",this.state.peerConnections)
-    console.log("localStream:",this.state.localStream)
-    console.log("remoteStreams:",this.state.remoteStreams)
+   
+
+    
+
+
+
     return (
-      <div>
-        <Host localStream={this.state.localStream} myName={this.name} admin={this.admin} connection={this.socket} room={this.room} showMuteControls={true}/>         
+      <div>      
+        <Host localStream={this.state.localStream} myName={this.name} admin={this.admin} connection={this.socket} room={this.room} showMuteControls={true} callback = {this.inactiveParticipant} attendanceMiniute={this.state.attendanceTime}/>         
         {this.state.startCapture}
          {this.state.stopCapture}
-        <Vids remoteStreams={this.state.remoteStreams}/>
+        <Vids remoteStreams={this.state.remoteStreams} members={this.state.attentiveParticipant} admin={this.admin}/>
         {this.state.attention}
       </div>
     )

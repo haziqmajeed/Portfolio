@@ -6,7 +6,7 @@ var io = require('socket.io')
   path: '/haziq'
 })
 
-const {checkRoom,addUser, removeUser, getUser, getUsersInRoom } = require('./users');
+const {checkRoom,addUser, removeUser, getUser, getUsersInRoom,addRoomTime,getRoomTime } = require('./users');
 
 
 const app = express()
@@ -82,6 +82,23 @@ peers.on('connection', socket => {
     
   })
 
+  //set time for attendance
+
+  socket.on('setTime', (data) => {
+    const  room =  addRoomTime({ miniute:data.miniute, room:data.room });
+    // console.log(room.miniute);  
+    // const time = getRoomTime(data.room)
+    // console.log(time.miniute)
+  })
+  socket.on('getTime', (data) => {
+
+    const  time =  getRoomTime(data.room);
+    console.log("TIME:", time)
+    if (time)
+      socket.emit('recieveTime', {miniute:time.miniute})
+  })
+
+
 
 
   socket.on('onlinePeers', (data) => {
@@ -92,13 +109,21 @@ peers.on('connection', socket => {
 
     if(users.length === 0){
       const type = "admin"
-      const { error, user }=  addUser({ type , socket, id: socket.id, name:data.name, room:data.room });
+      const { error, user }=  addUser({ type , socket, id: socket.id, name:data.name, room:data.room , time:null });
       console.log(user.type);
     }
     else{
       const type = "participant"
-        const { error, user }=  addUser({ type , socket, id: socket.id, name:data.name, room:data.room });
-        console.log(user.type);
+      const time = getRoomTime(data.room)
+      if (time){
+        const { error, user }=  addUser({ type , socket, id: socket.id, name:data.name, room:data.room , time:time.miniute});
+       console.log(user.time)
+      }
+      else{
+        const { error, user }=  addUser({ type , socket, id: socket.id, name:data.name, room:data.room , time:null});
+        console.log(user)
+      }
+        
     }
     
     for (var temp of users){

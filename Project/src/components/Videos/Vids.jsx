@@ -3,12 +3,18 @@ import React, { Component } from 'react'
 import Names from '../Names'
 import SingleVideo from './SingleVideo'
 
+
+
+
+
+
 class Vids extends Component {
     constructor(props) {
         super(props)  
         this.state = {
         remoteStreams:[],
         rVideos: [],
+        participantActive:[],
         }
         
        
@@ -16,10 +22,18 @@ class Vids extends Component {
         
     }
 
+
+    handleChange = (data) => {
+      this.setState({
+        participantActive:[...this.state.participantActive,data]
+      })
+
+    }
+
   
     
     componentWillReceiveProps(nextProps){
-     
+      
         if (this.props.remoteStreams !== nextProps.remoteStreams) {
         
 
@@ -29,12 +43,15 @@ class Vids extends Component {
               
              
                 let video = <SingleVideo
+                key={index}
                 localStream={rVideo.stream}
                 id={rVideo.id}
                 name={rVideo.name}
                 type={rVideo.userType}
-              
-                
+                admin={nextProps.admin}
+                trigger={false}
+                check={this.handleChange}
+             
                  
                 />
                 return (
@@ -51,7 +68,42 @@ class Vids extends Component {
                 rVideos: _rVideos
               })
 
+        } 
+       // checking if member lengthy is 0 it means all inactive other with in 
+       //else we will check who is active then we set their status to active
+        if (nextProps.members.length===0){
+
+          if (this.state.participantActive.length>0){
+          this.state.participantActive.map((data, index) => {
+              data.change(false)
+          })
+          }
+          
+
+      }
+      else{
+        if (this.state.participantActive.length>0){
+          for (var i =0;i<nextProps.members.length;i++){
+              this.state.participantActive.map((data, index) => {
+                  if(nextProps.members[i].id===data.id){
+                    data.change(true)
+                  }
+
+              })
         }
+
+
+          }
+
+
+      }
+
+      
+    //     if(this.state.rVideos.length>0){  
+         
+    //       console.log("rVideos:",this.state.rVideos[0].props.children)  
+    //       console.log("child:",this.state.rVideos[0].props.children.props.id)   
+    //  }
         
        
         
@@ -59,15 +111,19 @@ class Vids extends Component {
        
     }
     
-   
-
     
+   
+  
    
 
 
     render() { 
-        
-        
+     
+     
+      
+
+      
+   
         return ( <div>
 
 { this.state.rVideos }
