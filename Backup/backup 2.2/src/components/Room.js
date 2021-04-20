@@ -13,7 +13,6 @@ import Popup from './Popup/Popup';
 import { green, red } from '@material-ui/core/colors';
 import { Button, withStyles } from '@material-ui/core';
 import Names from './Names';
-import Fullscreen from './Videos/Fullscreen';
 class Room extends Component {
   constructor(props) {
     super(props)
@@ -63,8 +62,8 @@ class Room extends Component {
     }
 
    
-    //this.serviceIP = 'https://90878c48c133.ngrok.io/webrtcPeer' // change with ngrok to use application on other devices
-   this.serviceIP = 'http://localhost:8080/webrtcPeer'
+    this.serviceIP = 'https://59a42d9175a6.ngrok.io/webrtcPeer' // change with ngrok to use application on other devices
+    //this.serviceIP = 'http://localhost:8080/webrtcPeer'
     this.socket = null
     this.admin=null;
     this.room = null;
@@ -281,7 +280,7 @@ getScreenWithAudio = async () =>{
       test.replaceTrack(videoTrack);
       
     }
-    stream.getAudioTracks()[0].enabled=false; //by default mic is turned off when screen sharing pressed
+
     let audioTrack = stream.getAudioTracks()[0];
     for (var connection in this.state.peerConnections){
       var sender = this.state.peerConnections[connection].getSenders()
@@ -652,10 +651,10 @@ this.socket.on('recieveTime', data => {
   }
   render() {
     return (
-      <div>
+      <div>      
         <Host localStream={this.state.localStream}  myName={this.name} admin={this.admin} connection={this.socket} room={this.room} showMuteControls={true} callback = {this.inactiveParticipant} attendanceMiniute={this.state.attendanceTime} autoPlay muted/>         
         {this.state.startCapture}
-        {this.state.stopCapture}
+         {this.state.stopCapture}
         <Vids remoteStreams={this.state.remoteStreams} members={this.state.attentiveParticipant} admin={this.admin}/>
         {this.state.attention}
         <Names members={this.state.attentiveParticipant} admin={this.admin} remoteStreams={this.state.remoteStreams}/>

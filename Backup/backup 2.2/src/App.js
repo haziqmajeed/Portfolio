@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import Join from './components/Join/Join';
 import Room from './components/Room';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 class App extends Component {
   constructor(props) {
     super(props)
@@ -20,12 +20,8 @@ class App extends Component {
       <div>
         
         <Router>
-        <Switch>
-          
-           <Route path="/" exact component={Join} />
-           <Route path="/chat" component={Room} />
-          
-        </Switch>
+        <Route path="/" exact component={Join} />
+        <Route path="/chat" component={Room} />
       </Router>         
       </div>
     )

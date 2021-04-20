@@ -24,7 +24,7 @@ class Host extends Component {
     componentDidMount(){     
         this.timeOut=setInterval(()=>{          
           if (!this.props.admin){            
-            if (this.state.passMiniutes === Number(this.props.attendanceMiniute) && this.props.attendanceMiniute !== null){
+            if (this.state.passMiniutes === Number(this.props.attendanceMiniute)){
               console.log("COMPLETED TIME")
             }
             if (this.state.passSeconds===2){ //givve 60 seconds here because 1 min = 60 sec
@@ -210,8 +210,7 @@ class Host extends Component {
         </div> 
 
         </Grid>
-        <Grid item xs={3}></Grid>
-        <Grid item xs={3}>
+        <Grid item xs={6}>
           
           {setTime()}
 

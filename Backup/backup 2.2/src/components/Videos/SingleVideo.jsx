@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Grid, Button } from '@material-ui/core';
-import { Link } from 'react-router-dom';
 
 
 
@@ -10,10 +9,11 @@ class SingleVideo extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-      
-            width:"200px",
+           active:null,
+           inactive:null,
+           
          }
-         
+        
     }
 
    
@@ -59,8 +59,6 @@ class SingleVideo extends Component {
         }
        
       }
-
-      
       
 
    
@@ -87,31 +85,13 @@ class SingleVideo extends Component {
         
         <Grid container item xs={4} >
         <div>
-            <video autoPlay ref= {(ref)=>{this.video = ref}} style={{backgroundColor:'black',width:this.state.width,cursor: 'pointer'}} 
-            onClick={()=>{
-                if (this.state.width == "200px"){
-                    this.setState({
-                        width:"1850px",
-                    })
-                }
-                else{
-                    this.setState({
-                        width:"200px",
-                    })
-                }
-                
-               
-}}
-            
-            
-            ></video>    
+            <video autoPlay ref= {(ref)=>{this.video = ref}} style={{backgroundColor:'black',width:"200px"}}></video>    
             <h2 >{this.props.name}</h2> 
               {Testing()}
             
            
         </div> 
-     
-       
+        
         
         </Grid>
         
