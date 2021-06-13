@@ -7,6 +7,7 @@ import React, { Component } from 'react';
 import Join from './components/Join/Join';
 import Room from './components/Room';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import EndCall from './components/EndCall';
 class App extends Component {
   constructor(props) {
     super(props)
@@ -24,6 +25,7 @@ class App extends Component {
           
            <Route path="/" exact component={Join} />
            <Route path="/chat" component={Room} />
+           <Route path="/endCall" component={EndCall} />
           
         </Switch>
       </Router>         

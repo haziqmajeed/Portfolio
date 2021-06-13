@@ -70,8 +70,12 @@ const getUser = (id) => users.find((user) => user.id === id);
 
 const getUsersInRoom = (room) => users.filter((user) => user.room === room);
 
+
 const checkRoom = (room) => {
-  return users.includes(room)
+ const allUsers =  users.filter((user) => user.room === room)
+ const admin = allUsers.find((user) => user.type === "admin");
+ 
+ return admin
 }
 
 module.exports = { checkRoom,addUser, removeUser, getUser, getUsersInRoom,addRoomTime,getRoomTime,addUserTimes,getUserTime,removeUserTime };

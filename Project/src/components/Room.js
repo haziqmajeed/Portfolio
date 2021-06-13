@@ -10,10 +10,17 @@ import Vids from './Videos/Vids'
 import queryString from 'query-string';
 import Host from './Videos/Host';
 import Popup from './Popup/Popup';
+import { Link } from 'react-router-dom';
 import { green, red } from '@material-ui/core/colors';
-import { Button, withStyles } from '@material-ui/core';
+import { Button, Fab, withStyles } from '@material-ui/core';
 import Names from './Names';
 import Fullscreen from './Videos/Fullscreen';
+import * as Excel from 'exceljs';
+import {saveAs} from "file-saver";
+import CallEndIcon from '@material-ui/icons/CallEnd';
+
+
+
 class Room extends Component {
   constructor(props) {
     super(props)
@@ -63,7 +70,7 @@ class Room extends Component {
     }
 
    
-    //this.serviceIP = 'https://90878c48c133.ngrok.io/webrtcPeer' // change with ngrok to use application on other devices
+    //this.serviceIP = 'https://5d7027550161.ngrok.io/webrtcPeer' // change with ngrok to use application on other devices
    this.serviceIP = 'http://localhost:8080/webrtcPeer'
     this.socket = null
     this.admin=null;
@@ -72,7 +79,8 @@ class Room extends Component {
     this.timeOut=null;
     this.pc=null;
     this.screenShare=null;
-
+    this.workbook=new Excel.Workbook();
+    this.worksheet=null;
 
 
     
@@ -523,6 +531,32 @@ this.socket.on('recieveTime', data => {
   console.log("data:",this.state.attendanceTime)
 })
 
+this.socket.on('markMyAttendance', async data => {
+  console.log("Studentdata:",data)
+
+
+
+
+if(!this.worksheet){
+  
+  this.worksheet = this.workbook.addWorksheet('My Sheet');
+
+  this.worksheet.columns = [
+      { header: 'RollNo', key: 'rollNo', width: 40 },
+      { header: 'Name', key: 'name', width: 32 },
+      
+  ];
+}
+
+  this.worksheet.addRow({ rollNo: data.id, name: data.name});
+  
+
+
+  
+
+ })
+
+
 
 
 
@@ -645,20 +679,77 @@ this.socket.on('recieveTime', data => {
         pc.addIceCandidate(new RTCIceCandidate(data.candidate))
     })
 
-    
+
+    this.endCall = async () => {
+      console.log("End call")
+     
+      if (this.admin){
+       
+
+//Attendance saving here
+        const buffer = await this.workbook.xlsx.writeBuffer();
+const fileType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+const fileExtension = '.xlsx';
+
+const blob = new Blob([buffer], {type: fileType});
+
+saveAs(blob, 'AttendanceFile' + fileExtension);
+
+
+      }
+
+
+      this.pc.close = () => {
+        
+      }
+      this.socket.emit('endCall', this.socket.id)
+      
+
+    }
 
     
 
   }
   render() {
+
+    const EndCall = withStyles((theme) => ({
+      root: {
+        color: theme.palette.getContrastText(red[500]),
+        backgroundColor: red[500],
+        "&:hover": {
+          backgroundColor: red[700]
+        }
+      }
+    }))(Fab);
+
     return (
       <div>
         <Host localStream={this.state.localStream}  myName={this.name} admin={this.admin} connection={this.socket} room={this.room} showMuteControls={true} callback = {this.inactiveParticipant} attendanceMiniute={this.state.attendanceTime} autoPlay muted/>         
+       
         {this.state.startCapture}
         {this.state.stopCapture}
+
+        <Link to="/endCall" style={{marginLeft:"200px"}}>
+            <EndCall>
+              <CallEndIcon 
+          onClick={()=>{
+            this.endCall()
+  }}
+          />
+
+
+            </EndCall>
+
+      
+            
+         
+
+        </Link>
+        
         <Vids remoteStreams={this.state.remoteStreams} members={this.state.attentiveParticipant} admin={this.admin}/>
         {this.state.attention}
         <Names members={this.state.attentiveParticipant} admin={this.admin} remoteStreams={this.state.remoteStreams}/>
+         
       </div>
     )
   }

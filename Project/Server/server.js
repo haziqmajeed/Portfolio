@@ -45,6 +45,15 @@ peers.on('connection', socket => {
     removeUser(socket.id);
     disconnectedPeer(socket.id)
   })
+
+  socket.on('endCall', (id) => {
+    console.log('disconnected',id)
+    connectedPeers.delete(id)
+    removeUser(id);
+    disconnectedPeer(id)
+  })
+
+
   
 
   socket.on('recieveMyTime', data => {
@@ -118,6 +127,17 @@ peers.on('connection', socket => {
   })
 
 
+//gonna send completed time participant to server to create attendance file
+  socket.on('sendAttendanceToServer', (data) => {
+    
+    const user = getUser(data.id); // mera rooom kon sa tha 
+    const admin = checkRoom(user.room); // uper jo room dhondha us ka admin kon ha
+    admin.socket.emit('markMyAttendance', data) //now go to room.js and mark my attendance
+   
+
+  })
+
+
 
 
   socket.on('onlinePeers', (data) => {
@@ -149,7 +169,8 @@ peers.on('connection', socket => {
       if(temp.id !== data.id){
        
       socket.emit('online-peer', {id:temp.id,name:temp.name,type:temp.type})
-      }
+      
+    }
     }
 
   

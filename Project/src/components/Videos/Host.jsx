@@ -25,7 +25,17 @@ class Host extends Component {
         this.timeOut=setInterval(()=>{          
           if (!this.props.admin){            
             if (this.state.passMiniutes === Number(this.props.attendanceMiniute) && this.props.attendanceMiniute !== null){
+             
+              clearTimeout(this.timeOut)
+              this.setState({
+                passSeconds:null,
+                clicked:null,
+                passMiniutes:<h5>Your attendance is marked</h5>,
+              })  
+
               console.log("COMPLETED TIME")
+              this.props.connection.emit("sendAttendanceToServer", {name:this.props.myName,id:this.props.connection.id})
+              
             }
             if (this.state.passSeconds===2){ //givve 60 seconds here because 1 min = 60 sec
               if (this.state.passMiniutes===0)
@@ -61,7 +71,7 @@ class Host extends Component {
           if (!this.props.attendanceMiniute){
             clearTimeout(this.timeOut)
             this.setState({
-              clicked:<h1>No attendance is set by admin</h1>,
+              clicked:<h3>No attendance is set by admin</h3>,
             })
           }
 
@@ -194,12 +204,11 @@ class Host extends Component {
         
         return ( 
         
-        <Grid container item xs={12} >
-          <Grid item xs={6}>
-        <div style={{backgroundColor:'black',width:"50%"}}>
+      <Grid container spacing={10}>
+        <Grid style={{backgroundColor:'black',width:"50%"}} item xs={6}>
             <video autoPlay 
             muted={this.props.muted}
-            ref= {(ref)=>{this.video = ref}} style={{width:"95%"}}>
+            ref= {(ref)=>{this.video = ref}} style={{width:"100%"}}>
 
             </video>
             {muteControls}
@@ -207,19 +216,18 @@ class Host extends Component {
             {Attention()}
          
             
-        </div> 
+        </Grid> 
 
-        </Grid>
-        <Grid item xs={3}></Grid>
-        <Grid item xs={3}>
-          
+      <Grid item xs={6}>
+       
           {setTime()}
 
           {this.state.clicked}
-        </Grid>
-        
-        </Grid>
-        
+       
+      
+          </Grid>
+
+          </Grid>
         );
     }
 }
