@@ -1,0 +1,17 @@
+.animate:hover {
+    transform: scale(0.99);
+    color:#2251c7;
+    cursor: pointer;
+    
+  }
+  .animate {
+    transition: transform .2s;
+    cursor: pointer;
+ }
+ .linkColor{
+    color: #0099dc
+ }
+
+ .borderColor{
+     border-color: #c4ecec;
+ }

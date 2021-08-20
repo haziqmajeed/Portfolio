@@ -1,0 +1,43 @@
+.keyPriorities {
+    .box {
+      height: 10rem;
+      backdrop-filter: blur(10px) brightness(112%);
+      border-radius: 0 2rem 0 0;
+    }
+  
+    .text {
+      display: none;
+      margin-top: 1rem;
+      max-width: 18rem;
+    }
+    &:hover .text {
+      display: block;
+    }
+  }
+  
+  .featureImage {
+    position: relative;
+  
+    &:before {
+      content: "";
+      position: absolute;
+      left: 1rem;
+      bottom: 0.75rem;
+      width: 4rem;
+      height: 1.5rem;
+      background-image: url(/images/feature-icon.svg);
+      background-repeat: no-repeat;
+      background-size: 4rem 1.5rem;
+    }
+  
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: -1.5rem;
+      right: 0;
+      width: 0.75rem;
+      height: 3rem;
+      background-color: #ffb41f;
+    }
+  }
+  
