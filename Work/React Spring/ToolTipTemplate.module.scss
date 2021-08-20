@@ -1,0 +1,25 @@
+.opaque {
+  opacity: 1 !important;
+  width: 30% !important;
+  padding: 35px !important;
+}
+.borderColor{
+  border-color:#e7e7e7 !important;
+  z-index: 1 !important;
+  width: 50%;
+  border-width: 2px;
+}
+
+.backboneToolTipCustomCss{
+  bottom: 87px !important;
+  border-color: #e7e7e7 !important;
+  border-width: 2px;
+  z-index: 1 !important;
+  width: 253px !important;
+}
+.steeringToolTipCustomCss{
+  border-color: #e7e7e7 !important;
+  border-width: 2px;
+  z-index: 1 !important;
+  width: 253px !important;
+}
