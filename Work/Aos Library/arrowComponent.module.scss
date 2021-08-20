@@ -1,0 +1,484 @@
+.VCFlowchart{
+  margin-top: 50px;
+  justify-items: center;
+}
+
+.HBFlowchart{
+  justify-items: center;
+}
+
+.LCFlowchart{
+  justify-items: center;
+}
+
+.LBFlowchart{
+  justify-items: center;
+}
+
+.verticalMidLine{
+  margin-top: -16px;
+}
+
+.banner{
+  margin-top: -78px;
+  width: 24rem;
+}
+
+.horizontalLine{
+  width: 644px;
+  margin-left: -8px;
+}
+
+.verticesCSS1{
+  margin-top: -16px;
+  margin-left: -307px;
+}
+
+.circleCSS1{
+  margin-left: -307px;
+}
+
+.verticesCSS2{
+  margin-top: -16px;
+  margin-left: 290px;
+}
+
+.circleCSS2{
+  margin-left: 290px;
+}
+
+.line1{
+  position: absolute;
+  margin-top: 60px;
+  margin-left: 255px;
+}
+
+.circle1{
+  position: absolute;
+  margin-top: 45px;
+  margin-left: 220px;
+}
+
+.blueDiv1{
+  position: absolute;
+  margin-top: 46px;
+  margin-left: -67px;
+}
+
+.line2{
+  position: absolute;
+  margin-top: 120px;
+  margin-left: 335px;
+}
+
+.circle2{
+  position: absolute;
+  margin-top: 105px;
+  margin-left: 410px;
+}
+
+.blueDiv2{
+  position: absolute;
+  margin-top: 106px;
+  margin-left: 448px;
+}
+
+.line3{
+  position: absolute;
+  margin-top: 200px;
+  margin-left: 255px;
+}
+
+.circle3{
+  position: absolute;
+  margin-top: 185px;
+  margin-left: 220px;
+}
+
+.blueDiv3{
+  position: absolute;
+  margin-top: 186px;
+  margin-left: 99px;
+}
+
+.line4{
+  position: absolute;
+  margin-top: 280px;
+  margin-left: 335px;
+}
+
+.circle4{
+  position: absolute;
+  margin-top: 265px;
+  margin-left: 410px;
+}
+
+.blueDiv4{
+  position: absolute;
+  margin-top: 266px;
+  margin-left: 448px;
+}
+
+.line5{
+  position: absolute;
+  margin-top: 360px;
+  margin-left: 255px;
+}
+
+.circle5{
+  position: absolute;
+  margin-top: 345px;
+  margin-left: 220px;
+}
+
+.blueDiv5{
+  position: absolute;
+  margin-top: 346px;
+  margin-left: 25px;
+}
+
+.banner2{
+  width: 24rem;
+  max-width: 100%;
+}
+
+@media (min-width: 1536px) {
+
+  .horizontalLine{
+    width: 648px;
+    margin-left: -6px;
+  }
+
+  .verticesCSS1{
+    margin-top: -16px;
+    margin-left: -304px;
+  }
+
+  .circleCSS1{
+    margin-left: -304px;
+  }
+
+  .verticesCSS2{
+    margin-top: -16px;
+    margin-left: 293px;
+  }
+
+  .circleCSS2{
+    margin-left: 293px;
+  }
+
+  .line1{
+    margin-top: 60px;
+    margin-left: 258px;
+  }
+
+  .circle1{
+    margin-top: 45px;
+    margin-left: 223px;
+  }
+
+  .blueDiv1{
+    margin-top: 46px;
+    margin-left:-63px;
+  }
+
+  .line3{
+    margin-top: 200px;
+    margin-left: 258px;
+  }
+
+  .circle3{
+    margin-top: 185px;
+    margin-left: 223px;
+  }
+
+  .blueDiv3{
+    margin-top: 186px;
+    margin-left: 104px;
+  }
+
+  .line5{
+    margin-top: 360px;
+    margin-left: 258px;
+  }
+
+  .circle5{
+    margin-top: 345px;
+    margin-left: 223px;
+  }
+
+  .blueDiv5{
+    margin-top: 346px;
+    margin-left: 29px;
+  }
+
+  .line2{
+    margin-top: 120px;
+    margin-left: 338px;
+  }
+
+  .circle2{
+    margin-top: 105px;
+    margin-left: 413px;
+  }
+
+  .blueDiv2{
+    margin-top: 106px;
+    margin-left: 451px;
+  }
+
+  .line4{
+    margin-top: 280px;
+    margin-left: 338px;
+  }
+
+  .circle4{
+    margin-top: 265px;
+    margin-left: 413px;
+  }
+
+  .blueDiv4{
+    margin-top: 266px;
+    margin-left: 451px;
+  }
+}
+
+@media (max-width: 1023px) {
+
+  .banner{
+    margin-top: 0;
+  }
+  
+  .horizontalLine{
+    display: none;
+  }
+
+  .verticesCSS1{
+    margin-top: -16px;
+    margin-left: -146px;
+  }
+
+  .circleCSS1{
+    margin-left: -146px;
+  }
+
+  .verticesCSS2{
+    margin-top: -16px;
+    margin-left: 135px;
+  }
+
+  .circleCSS2{
+    margin-left: 135px;
+  }
+
+  .line1{
+    margin-left: 117px;
+  }
+
+  .circle1{
+    margin-left: 82px;
+  }
+
+  .blueDiv1{
+    margin-top: 85px;
+    margin-left: -126px;
+  }
+
+  .line2{
+    margin-left: 195px;
+  }
+
+  .circle2{
+    margin-left: 270px;
+  }
+
+  .blueDiv2{
+    margin-top: 145px;
+    margin-left: 232px;
+  }
+
+  .line3{
+    margin-left: 117px;
+  }
+
+  .circle3{
+    margin-left: 82px;
+  }
+
+  .blueDiv3{
+    margin-top: 224px;
+    margin-left: 40px;
+  }
+
+  .line4{
+    margin-left: 195px;
+  }
+
+  .circle4{
+    margin-left: 270px;
+  }
+
+  .blueDiv4{
+    margin-top: 304px;
+    margin-left: 232px;
+  }
+
+  .line5{
+    margin-left: 117px;
+  }
+
+  .circle5{
+    margin-left: 82px;
+  }
+
+  .blueDiv5{
+    margin-top: 385px;
+    margin-left: -34px;
+  }
+}
+
+@media (max-width: 991px) {
+
+  .verticalMidLine{
+    opacity: 0 !important;
+  }
+  
+  .verticesCSS1{
+    margin-top: -16px;
+    margin-left: -146px;
+  }
+
+  .circleCSS1{
+    margin-left: -146px;
+  }
+
+  .verticesCSS2{
+    margin-top: -16px;
+    margin-left: 135px;
+  }
+
+  .circleCSS2{
+    margin-left: 135px;
+  }
+
+  .line1{
+    display: none;
+  }
+
+  .circle1{
+    margin-top: 20px;
+    margin-left: 175px;
+  }
+
+  .blueDiv1{
+    margin-top: 60px;
+    margin-left: 50px;
+  }
+
+  .line2{
+    display: none;
+  }
+
+  .circle2{
+    margin-left: 175px;
+  }
+
+  .blueDiv2{
+    margin-top: 145px;
+    margin-left: 26px;
+  }
+
+  .line3{
+    display: none;
+  }
+
+  .circle3{
+    margin-left: 175px;
+  }
+
+  .blueDiv3{
+    margin-top: 224px;
+    margin-left: 132px;
+  }
+
+  .line4{
+    display: none;
+  }
+
+  .circle4{
+    margin-left: 175px;
+  }
+
+  .blueDiv4{
+    margin-top: 304px;
+    margin-left: 45px;
+  }
+
+  .line5{
+    display: none;
+  }
+
+  .circle5{
+    margin-left: 175px;
+  }
+
+  .blueDiv5{
+    margin-top: 385px;
+    margin-left: 95px;
+  }
+}
+
+@media (max-width: 639px) {
+  
+  .circleCSS1,
+  .circleCSS2,
+  .verticesCSS1,
+  .verticesCSS2{
+    margin-left: 0;
+  }
+
+  .circle1{
+    margin-left: 160px;
+  }
+
+  .blueDiv1{
+    margin-left: 35px;
+  }
+
+  .circle2{
+    margin-left: 160px;
+  }
+
+  .blueDiv2{
+    margin-left: 11px;
+  }
+
+  .circle3{
+    margin-left: 160px;
+  }
+
+  .blueDiv3{
+    margin-left: 117px;
+  }
+
+  .circle4{
+    margin-left: 160px;
+  }
+
+  .blueDiv4{
+    margin-left: 30px;
+  }
+
+  .circle5{
+    margin-left: 160px;
+  }
+
+  .blueDiv5{
+    margin-left: 80px;
+  }
+
+  .banner,
+  .banner2 {
+    width: 20rem;
+  }
+}
