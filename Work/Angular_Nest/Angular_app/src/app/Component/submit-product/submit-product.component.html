@@ -1,0 +1,18 @@
+<form #productPost="ngForm" (ngSubmit)="onSubmit(productPost.value)">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Title</label>
+      <input ngModel type="text" name="title" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Title">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Discription</label>
+        <input ngModel type="textField" name="discription" class="form-control" id="discription" aria-describedby="emailHelp" placeholder="Enter Discription">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Price</label>
+        <input ngModel type="Number" name="price" class="form-control" id="price" aria-describedby="emailHelp" placeholder="Enter Price">
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<h5 *ngIf = "submitSuccess">Data Updated successfully</h5>
+<h5 *ngIf = "submitFail">Data Fail To Update</h5>

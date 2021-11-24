@@ -1,0 +1,1 @@
+Project is connected with mongoDB Atlas so first connect with mongoDB to run

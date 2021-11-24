@@ -1,0 +1,5 @@
+nest g module products
+nest g controller products
+nest g service products
+npm run start:dev
+

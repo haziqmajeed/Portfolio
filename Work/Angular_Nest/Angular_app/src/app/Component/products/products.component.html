@@ -1,0 +1,10 @@
+<!-- <h1>{{products.title}}</h1>
+<p>{{products.price}}</p> -->
+<div *ngFor = "let object of obj">
+    <!-- <app-products [products]="object"></app-products> -->
+    <a [routerLink]="[ '/singleProduct',object._id]" routerLinkActive="active">{{object.title}}</a>
+    <p>{{object.price}}</p>
+    <button type="button" class="btn btn-danger" (click)="onDelete(object)">Delete</button>
+    <button type="button" class="btn btn-warning" [routerLink]="[ '/submitProduct',object._id]">Update</button>
+</div>
+<router-outlet></router-outlet>

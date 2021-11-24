@@ -1,0 +1,2 @@
+ng serve (run program)
+ng g c Component/header or header
