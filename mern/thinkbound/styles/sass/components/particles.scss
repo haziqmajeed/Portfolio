@@ -1,0 +1,140 @@
+/*-------- Particles --------*/
+
+.particles {
+  position: absolute;
+  z-index: 0;
+  & canvas {
+    width: 100%;
+    height: 100%;
+    pointer-events: initial !important;
+    position: unset !important;
+    z-index: unset !important;
+    top: unset !important;
+    left: unset !important;
+  }
+}
+
+.particles {
+  &--reputation {
+    width: 1000px;
+    top: -155px;
+    right: -252px;
+    z-index: 1;
+    transform: rotateZ(47deg);
+  }
+}
+
+.particles {
+  &--case {
+    top: 0;
+    right: 0;
+    width: 1000px;
+    top: -200px;
+  }
+}
+
+.particles {
+  &--blogs {
+    width: 627px;
+    right: 0;
+    top: 129px;
+  }
+}
+
+.particles {
+  &--service {
+    width: 627px;
+    right: 0;
+    top: 0;
+  }
+}
+
+.particles {
+  &--contact {
+    width: 700px;
+    right: 0;
+    top: 0;
+  }
+}
+
+.particles {
+  &--case-studies {
+    width: 700px;
+    right: 0;
+    top: 0;
+  }
+}
+
+.particles {
+  &--about {
+    width: 700px;
+    right: 0;
+    top: 0;
+  }
+}
+
+@media (max-width: 1099px) {
+  .particles {
+    &--reputation {
+      width: 83%;
+    }
+
+    &--case {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 989px) {
+  .particles {
+    &--blogs {
+      width: 100%;
+    }
+  }
+
+  .particles {
+    &--service {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .particles {
+    &--reputation {
+      top: 0;
+    }
+
+    &--case {
+      width: 80%;
+      top: 0;
+    }
+
+    &--case-studies {
+      width: 500px;
+    }
+  }
+}
+
+@media (max-width: 619px) {
+  .particles {
+    &--reputation {
+      right: -45px;
+    }
+
+    &--case-studies {
+      width: 100%;
+    }
+
+    &--case-study {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 479px) {
+  .particles--reputation {
+    width: 73%;
+  }
+}

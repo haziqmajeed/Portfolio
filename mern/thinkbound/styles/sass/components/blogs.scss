@@ -1,0 +1,85 @@
+/*-------- Blogs --------*/
+
+.blogs {
+    padding-bottom: 42px;
+    position: relative;
+
+    &__wrapper {
+        padding-top: 60px;
+        position: relative;
+    }
+
+    &__title {
+        font-family: $font-pf;
+        font-size: 64px;
+        text-align: center;
+    }
+
+    &__line-text {
+        margin-top: 40px;
+    }
+
+    &__list {
+        margin-top: 73px;
+        padding: 18px;
+        overflow: hidden;
+    }
+
+    &__item:not(:first-child) {
+        margin-top: 28px;
+    }
+
+    &__paginator {
+        margin-top: 126px;
+    }
+}
+
+@media (max-width: 1099px) {
+
+    .blogs {
+
+        &__wrapper {
+            padding-top: 20px;
+        }
+
+        &__line-text {
+            margin-top: 20px;
+        }
+
+        &__title {
+            font-size: 54px;
+        }
+
+        &__list {
+            margin-top: 53px;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+
+    .blogs {
+
+        &__list {
+            padding: 0;
+            overflow: visible;
+        }
+    }
+}
+
+@media (max-width: 619px) {
+
+    .blogs {
+        padding-bottom: 20px;
+
+        &__paginator {
+            margin-top: 80px;
+        }
+
+        &__item {
+            max-width: 320px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+}

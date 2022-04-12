@@ -1,0 +1,101 @@
+.preload-wrapper{
+    position: fixed;
+    left: 0;
+    top: 0;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    height: -webkit-fill-available;
+    width: 100%;
+    z-index: 2500;
+    background-color: #0965c5;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    font-family: "PF Premier Text Bold";
+    font-size: 200px;
+    font-weight: bold;
+    @media screen and (max-width:992px){
+        font-size: 150px;
+    }
+    @media screen and (max-width:892px){
+        font-size: 120px;
+    }
+    @media screen and (max-width:650px){
+        font-size: 80px;
+    }
+    @media screen and (max-width:420px){
+        font-size: 70px;
+    }
+    .preload-content{
+        position: relative;
+        opacity: 0;
+    }
+    .get-to,.break-through{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%); 
+        display: inline-flex;
+        align-items: center;
+        span{
+            display: block;
+        }
+    } 
+    .logo-wrap{
+        position: relative;
+        .icon_wrapper{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 134px;
+            height: 156px;
+        }
+        .logo-icon,.mask-wrap{
+            display: flex;
+            align-items: center; 
+            width: 134px;
+            height: 156px;
+        }
+        .icon_ani{
+            overflow: hidden;
+            position: relative;
+            .mask-wrap{
+                position: absolute;
+                left: 12px; 
+                top: -1px;
+                z-index: -1;
+            }
+        }
+    }
+    .get,.to,.break,.through{
+        overflow: hidden; 
+    }
+    .get{ 
+        margin-right: 36px;
+        @media screen and (max-width:892px){
+            margin-right:10px;
+        }
+    }
+    .get-to{
+        color: #273D7E;
+    }
+    .break-through{
+        color: #fff;
+    }
+} 
+.preload-logo-scale{
+    position: fixed;
+    left: 0;top: 0;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    height: -webkit-fill-available;
+    width: 100%;
+    background: #fff url(https://cms.thinkbound.com/wp-content/uploads/2022/01/logo-icon-dark.svg);
+    z-index: 2400;
+    background-size: 100px;
+    background-position: center;
+    background-repeat: no-repeat;
+    mix-blend-mode: screen;
+    opacity: 0;
+}

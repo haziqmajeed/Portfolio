@@ -1,0 +1,31 @@
+$blue: #4ebeff;
+$blue-med: #2a9df4;
+$blue-dark: #244397;
+
+$colors: (
+  "white": #ffffff,
+  "black": #000000,
+) !default;
+
+$font-el: "Manrope-ExtraLight";
+$font-l: "Manrope-Light";
+$font-r: "Manrope-Regular";
+$font-m: "Manrope-Medium";
+$font-sb: "Manrope-SemiBold";
+$font-b: "Manrope-Bold";
+$font-pf: "PF Premier Text Bold";
+$font-pf-l: "PF Premier Text Light";
+$font-pf-t: "PF Premier Text Thin";
+$font-md: "Myriad Pro";
+
+$cubic: cubic-bezier(0.2, 0, 0.175, 1);
+
+body {
+  margin: 0;
+  padding: 0;
+  ul {
+    list-style: none;
+  }
+}
+
+@import "./components/components.scss";

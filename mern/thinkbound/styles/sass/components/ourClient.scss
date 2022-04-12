@@ -1,0 +1,25 @@
+.ourclient__title{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3%;
+}
+
+.ourclient__clients{
+    display: flex;
+    /* padding: 0px 30px; */
+    max-width: 62%;
+    margin: auto;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.ourclient__image{
+    background-color: #f3f3f3;
+    padding: 43px;
+    /* width: 21%; */
+    margin-top: 1%;
+    
+}
+.ourclient{
+    margin-bottom: 6%;
+}

@@ -1,0 +1,139 @@
+/*-------- Paginator --------*/
+
+.paginator {
+    display: flex;
+    justify-content: center;
+
+    &__link {  
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 58px;
+        height: 58px;
+
+        font-family: $font-sb;
+        font-size: 19px;
+        color: #0c103c;
+        transition: box-shadow 0.2s ease-out;
+        border-radius: 5px;
+    }
+
+    &__link:hover {
+        box-shadow: 1px 2px 9px 1px rgba(0, 1, 1, 0.22);
+        background-color: #ffffff;
+    }
+
+    &__link span {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__link span:after {
+        content: '';
+        width: 15px;
+        height: 2px;
+        margin-top: 6px;
+        background-color: #d5d5d5;
+        transition: background-color 0.2s ease-out;
+    }
+
+    &__link:hover span:after {
+        background-color: #1d4693;
+    }
+
+    &__link--prev, &__link--next {
+        width: auto;
+        padding: 0 20px;
+    }
+
+    &__link--prev span:after, &__link--next span:after {
+        width: 100%;
+    }
+
+    &__link--prev:before, &__link--next:after {
+        content: '';
+        width: 6px;
+        height: 6px;
+        border: 3px solid #0c103c;
+        border-left: none;
+        border-top: none;
+        border-radius: 1px;
+    }
+
+    &__link--prev:before {
+        transform: rotateZ(135deg);
+        margin-right: 10px;
+    }
+
+    &__link--next:after {
+        transform: rotateZ(-45deg);
+        margin-left: 10px;
+    }
+
+    &__link--prev {
+        margin-right: 10px;
+    }
+
+    &__link--next {
+        margin-left: 10px;
+    }
+}
+
+@media (max-width: 619px) {
+
+    .paginator {
+
+        &__link {
+            width: 40px;
+            height: 40px;
+            font-size: 16px;
+        }
+
+        &__link--prev {
+            margin-right: 5px;
+        }
+
+        &__link--next {
+            margin-left: 5px;
+        }
+
+        &__link--prev, &__link--next {
+            width: auto;
+            padding: 0 10px;
+        }
+    }
+}
+
+@media (max-width: 479px) {
+
+    .paginator {
+
+        &__item:nth-child(6), &__item:nth-child(7) {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 359px) {
+
+    .paginator {
+
+        &__link {
+            font-size: 14px;
+        }
+
+        &__link--prev {
+            margin-right: 0;
+        }
+
+        &__link--next {
+            margin-left: 0;
+        }
+
+        &__link--prev, &__link--next {
+            padding: 0 6px;
+        }
+    }
+}

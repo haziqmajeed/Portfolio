@@ -1,0 +1,113 @@
+/*-------- Form --------*/
+
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    padding: 50px 36px;
+    box-shadow: 1px 2px 9px 1px rgba(0, 1, 1, 0.22);
+
+    background-color: #16336b;
+    border-radius: 4px;
+
+    &__button {
+        margin-top: 40px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    &__removebgbtn{
+        background-color: unset ;
+    }
+    &__removebgbtn .button__text{
+        color: white;
+    }
+}
+
+.form {
+
+    &--contact {
+        max-width: 595px;
+        margin-top: 72px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: -110px;
+        z-index: 2;
+        position: relative;
+    }
+}
+
+.form {
+
+    &--popup {
+        padding: 0;
+        background-color: transparent;
+        box-shadow: unset;
+    }
+}
+
+@media (max-width: 1219px) {
+
+    .form {
+
+        &--contact {
+            margin-bottom: 50px;
+        }
+    }
+}
+
+@media (max-width: 1099px) {
+
+    .form {
+
+        &--contact {
+            margin-top: 50px;
+        }
+    }
+}
+
+@media (max-width: 989px) {
+
+    .form {
+        
+        &__button {
+            margin-top: 20px;
+        }
+    }
+
+    .form {
+
+        &--service {
+            padding: 30px;
+        }
+    }
+}
+
+@media (max-width: 479px) {
+
+    .form {
+        
+        &--service {
+            padding: 20px;
+        }
+    }
+
+    .form {
+
+        &--popup &__input-wrapper--50 {
+            width: 100%;
+        }
+
+        &--popup &__input-wrapper:nth-child(n+3) {
+            margin-top: 0;
+        }
+
+        &--popup &__input-wrapper:not(:first-child) {
+            margin-top: 15px;
+        }
+
+        &--popup &__button {
+            width: 100%;
+        }
+    }
+}

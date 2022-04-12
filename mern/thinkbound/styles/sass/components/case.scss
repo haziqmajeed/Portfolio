@@ -1,0 +1,151 @@
+/*-------- Case --------*/
+
+.case {
+  padding-top: 140px;
+  padding-bottom: 170px;
+  overflow: hidden;
+  position: relative;
+  clip-path: polygon(0 15%, 100% 0%, 100% 85%, 0% 100%);
+  background-image: linear-gradient(135deg, #187bcd 0%, #187bcd 100%);
+
+  &__wrapper {
+    display: flex;
+    align-items: flex-start;
+    padding-left: 100px;
+    padding-right: 100px;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__button {
+    display: inline-flex;
+    height: 52px;
+    padding: 0 43px;
+    margin-top: 70px;
+    font-size: 19px;
+  }
+
+  &__list {
+    margin-top: 29px;
+  }
+
+  &__item:not(:first-child) {
+    margin-top: 45px;
+  }
+
+  &__item-title {
+    font-size: 19px;
+    font-family: $font-sb;
+    color: #ffffff;
+  }
+
+  &__item-text-mask {
+    overflow: visible;
+  }
+
+  &__item-text {
+    margin-top: 12px;
+    font-size: 19px;
+    line-height: 1.6;
+    color: #ffffff;
+    & h3 {
+      font-size: 34px;
+      padding-bottom: 12px;
+    }
+    & ul {
+      list-style: disc;
+      padding-left: 20px;
+    }
+  }
+
+  &__item-text--quote {
+    position: relative;
+    &::before {
+      content: "\201C";
+      position: absolute;
+      color: #0969b9;
+      font-size: 120px;
+      left: -50px;
+      top: -50px;
+    }
+  }
+
+  &__column {
+    flex-shrink: 0;
+    width: calc(100% - 674px);
+    padding-right: 58px;
+    z-index: 12;
+  }
+
+  &__title {
+    margin-bottom: 40px;
+    font-family: $font-pf;
+    font-size: 50px;
+    z-index: 1;
+    position: relative;
+    color: #ffffff;
+  }
+
+  &__title .title__cat {
+    font-size: 19px;
+  }
+
+  &__item-image-mask {
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 1219px) {
+  .case {
+    &__wrapper {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+}
+
+@media (max-width: 1099px) {
+  .case {
+    &__column {
+      width: calc(100% - 600px);
+    }
+  }
+}
+
+@media (max-width: 989px) {
+  .case {
+    padding-bottom: 104px;
+
+    &__wrapper {
+      flex-direction: column;
+    }
+
+    &__column {
+      display: none;
+    }
+
+    &__title {
+      text-align: center;
+    }
+  }
+}
+
+@media (max-width: 619px) {
+  .case {
+    padding-top: 20px;
+    clip-path: unset;
+    background-image: unset;
+    background-color: #187bcd;
+    &__title {
+      font-size: 49px;
+    }
+  }
+}
+
+@media (max-width: 479px) {
+  .case {
+    &__title {
+      font-size: 36px;
+    }
+  }
+}

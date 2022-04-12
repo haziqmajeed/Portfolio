@@ -1,0 +1,53 @@
+/*-------- Logo --------*/
+
+.logo {
+    display: block;
+    z-index: 2;
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out, visibility 0.3s ease-out;
+
+    &__image {
+        width: 84%;
+    }
+}
+
+@media (max-width: 1499px) {
+
+    .logo {
+        width: 22%;
+    }
+}
+
+@media (max-width: 1219px) {
+
+    .logo {
+        width: 20%;
+    }
+}
+
+@media (max-width: 989px) {
+
+    .logo {
+        width: 30%;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .logo {
+        width: 35%;
+    }
+}
+
+@media (max-width: 619px) {
+
+    .logo {
+        width: 48%;
+    }
+}
+
+@media (max-width: 359px) {
+
+    .logo {
+        width: 46%;
+    }
+}

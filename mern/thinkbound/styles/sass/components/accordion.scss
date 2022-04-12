@@ -1,0 +1,153 @@
+/*-------- Accordion --------*/
+
+.accordion {
+
+    &__title {
+        font-size: 26px;
+        text-align: center;
+    }
+
+    &__group:not(:first-child) {
+        margin-top: 15px;
+    }
+
+    &__button {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        width: 100%;
+        min-height: 80px;
+        padding: 15px 30px;
+
+        border: 2px solid #1d46937d;
+        border-radius: 5px;
+
+        font-family: $font-b;
+        font-size: 18px;
+
+        text-align: left;
+
+        transition: color 0.2s ease-out, background-color 0.2s ease-out;
+    }
+
+    &__button-plus {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        margin-left: 10px;
+
+        position: relative;
+
+        transition: transform 0.2s ease-out;
+    }
+
+    &__button-plus:before,  &__button-plus:after {
+        content: '';
+        width: 12px;
+        height: 2px;
+        background-color: #1d4693;
+        position: absolute;
+        transition: background-color 0.2s ease-out;
+    }
+
+    &__button-plus:after {
+        transform: rotateZ(90deg);
+    }
+
+    &__button.active, &__button:hover {
+        background-color: #16336b;
+        color: #ffffff;
+    }
+
+    &__button:hover &__button-plus:before,
+     &__button:hover &__button-plus:after,
+     &__button.active &__button-plus:before,
+     &__button.active &__button-plus:after {
+        background-color: #ffffff;
+    }
+
+    &__button.active &__button-plus:after {
+        display: none;
+    }
+
+    &__button:hover &__button-plus, &__button.active &__button-plus {
+        transform: rotate(180deg);
+    }
+
+    &__wrapper {
+        height: 0;
+        overflow: hidden;
+        transition: height 0.2s ease-out;
+    }
+
+    &__content {
+        padding: 30px 0;
+    }
+
+    &__text {
+        line-height: 1.4;
+    }
+}
+
+.accordion {
+
+    &--service {
+        margin-top: 80px;
+        max-width: 753px;
+    }
+
+    &--service &__groups {
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 619px) {
+
+    .accordion {
+
+        &__title {
+            font-size: 20px;
+        }
+
+        &__button {
+            font-size: 16px;
+        }
+    }
+
+    .accordion {
+
+        &--service {
+            margin-top: 50px;
+        }
+
+        &--service &__groups {
+            margin-top: 20px;
+        }
+    }
+}
+
+@media (max-width: 479px) {
+
+    .accordion {
+
+        &__title {
+            font-size: 5vw;
+        }
+
+        &__button {
+            padding-left: 15px;
+            padding-right: 20px;
+            font-size: 4vw;
+        }
+
+        &__content {
+            padding: 20px 0;
+        }
+
+        &__text {
+            font-size: 4.5vw;
+        }
+    }
+}

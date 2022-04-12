@@ -1,0 +1,35 @@
+/*-------- Select-wrapper --------*/
+
+.select-wrapper {
+    display: flex;
+    align-items: center;
+
+    position: relative;
+
+    &__select {
+        width: 100%;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+    }
+
+    &__select::-ms-expand {
+        display: none;
+    }
+
+    &:after {
+        content: '';
+        
+        width: 5px;
+        height: 5px;
+
+        position: absolute;
+        right: 20px;
+
+        border: 2px solid #000000;
+        border-left: none;
+        border-top: none;
+
+        transform: rotateZ(45deg);
+        pointer-events: none;
+    }
+}

@@ -1,0 +1,89 @@
+@font-face {
+    font-family: 'Manrope-Light';
+    src: url('subset-Manrope-Light.woff2') format('woff2'),
+        url('subset-Manrope-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Manrope-Bold';
+    src: url('subset-Manrope-Bold.woff2') format('woff2'),
+        url('subset-Manrope-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Manrope-Medium';
+    src: url('subset-Manrope-Medium.woff2') format('woff2'),
+        url('subset-Manrope-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Manrope-ExtraLight';
+    src: url('subset-Manrope-ExtraLight.woff2') format('woff2'),
+        url('subset-Manrope-ExtraLight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Manrope-Regular';
+    src: url('subset-Manrope-Regular.woff2') format('woff2'),
+        url('subset-Manrope-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Manrope-SemiBold';
+    src: url('subset-Manrope-SemiBold.woff2') format('woff2'),
+        url('subset-Manrope-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'PF Premier Text Light';
+    src: url('subset-PFPremierTextLight.woff2') format('woff2'),
+        url('subset-PFPremierTextLight.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'PF Premier Text Bold';
+    src: url('subset-PFPremierText-Bold.woff2') format('woff2'),
+        url('subset-PFPremierText-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'PF Premier Text Thin';
+    src: url('subset-PFPremierTextThin.woff2') format('woff2'),
+        url('subset-PFPremierTextThin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Myriad Pro';
+    src: url('subset-MyriadPro-Regular.woff2') format('woff2'),
+        url('subset-MyriadPro-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}

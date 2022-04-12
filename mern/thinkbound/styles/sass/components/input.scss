@@ -1,0 +1,29 @@
+/*-------- Input --------*/
+
+.input {
+    height: 52px;
+    padding: 0 20px;
+    background-color: #ffffff;
+    border: 2px solid #898989;
+    border-radius: 4px;
+    font-size: 15px;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.input {
+
+    &--textarea {
+        padding: 20px;
+        height: 102px;
+        resize: none;
+    }
+}
+
+@media (max-width: 989px) {
+
+    .input {
+        height: 40px;
+        font-size: 14px;
+    }
+}

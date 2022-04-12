@@ -1,0 +1,18 @@
+/*-------- Video --------*/
+
+.video {
+    width: 100%;
+    height: 120%;
+    position: absolute;
+    top: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+}
+
+@media (max-width: 1699px) {
+
+    .video--main {
+        width: auto;
+    }
+}

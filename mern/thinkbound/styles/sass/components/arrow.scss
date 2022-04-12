@@ -1,0 +1,71 @@
+/*-------- Arrow --------*/
+
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  $size: 18px;
+  width: $size;
+  height: $size;
+
+  position: relative;
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+  }
+
+  &:before {
+    width: 12px;
+    height: 1px;
+    background-color: #000000;
+    transition: background-color 0.2s ease-in-out;
+    right: 0;
+  }
+
+  &:after {
+    $size: 4px;
+    width: $size;
+    height: $size;
+
+    right: 0;
+
+    border: 1px solid #000000;
+    border-left: none;
+    border-top: none;
+
+    transition: border-color 0.2s ease-in-out;
+
+    transform: rotateZ(-45deg);
+  }
+}
+
+.arrow {
+  &--v2:before {
+    width: 9px;
+    right: unset;
+    background-color: #ffffff;
+  }
+
+  &--v2:after {
+    right: 5px;
+    border-color: #ffffff;
+  }
+}
+
+.swiper {
+  &--case {
+    .arrow {
+      &--v2 {
+        &::before {
+          background-color: #000000;
+        }
+        &::after {
+          border-color: #000000;
+        }
+      }
+    }
+  }
+}

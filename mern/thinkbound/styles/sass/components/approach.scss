@@ -1,0 +1,132 @@
+/*-------- Approach --------*/
+
+.approach {
+    position: relative;
+    // padding-top: 253px;
+    padding-bottom: 139px;
+
+    &__wrapper {
+        position: relative;
+        z-index: 1;
+    }
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 155px;
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: calc(33% - 40px);
+        text-align: center;
+    }
+
+    &__item:nth-child(n+4) {
+        margin-top: 80px;
+    }
+
+    &__item-icon {
+        width: 90px;
+        height: 90px;
+    }
+
+    &__item-title {
+        margin-top: 25px;
+        font-size: 19px;
+        color: #1d4693;
+    }
+
+    &__item-text {
+        margin-top: 35px;
+        font-size: 19px;
+        line-height: 1.6;
+    }
+}
+
+@media (max-width: 1219px) {
+
+    .approach {
+        padding-top: 100px;
+        padding-bottom: 100px;
+
+        &__list {
+            margin-top: 60px;
+        }
+    }
+}
+
+@media (max-width: 1099px) {
+
+    .approach {
+
+        &__item {
+            width: calc(33% - 14px);
+        }
+    }
+}
+
+@media (max-width: 989px) {
+
+    .approach {
+
+        &__item-title {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        &__item-text {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        &__item:nth-child(n+4) {
+            margin-top: 40px;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+
+    .approach {
+        padding-top: 80px;
+        padding-bottom: 20px;
+
+        &__list {
+            margin-top: 30px;
+        }
+
+        &__item {
+            width: calc(33% - 10px);
+        }
+
+        &__item-title {
+            font-size: 15px;
+        }
+
+        &__item-text {
+            font-size: 14px;
+        }
+    }
+}
+
+@media (max-width: 619px) {
+
+    .approach {
+
+        &__item {
+            width: calc(50% - 8px);
+        }
+
+        &__item:nth-child(n) {
+            margin-top: 0;
+        }
+
+        &__item:nth-child(n+3) {
+            margin-top: 20px;
+        }
+    }
+}

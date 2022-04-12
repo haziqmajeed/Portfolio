@@ -1,0 +1,87 @@
+/*-------- Cursor --------*/
+
+.cursor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 999999999;
+  pointer-events: none;
+
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+
+    background: #4ebeff;
+
+    border-radius: 50%;
+    opacity: 0.4;
+    transition: background 0.5s, transform 0.3s ease-out, opacity 0.2s ease-out;
+  }
+
+  &__arrow {
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    border: 2px solid #000000;
+    border-left: none;
+    border-top: none;
+    opacity: 0;
+
+    transform: top 0.4s ease-out, transform 0.4s ease-out, left 0.4s ease-out,
+      right 0.4s ease-out, bottom 0.4s ease-out, opacity 0.3s ease-out;
+  }
+
+  &__arrow--1 {
+    left: 5px;
+    transform: rotateZ(135deg);
+  }
+
+  &__arrow--2 {
+    right: 5px;
+    transform: rotateZ(-45deg);
+  }
+
+  &--grab &__arrow {
+    opacity: 1;
+  }
+
+  &--hover &__wrapper,
+  &--grab &__wrapper {
+    transform: scale(1.4);
+  }
+
+  &--hover &__arrow {
+    opacity: 0;
+  }
+
+  &--pointer &__wrapper {
+    opacity: 0;
+  }
+
+  &--delete {
+    display: none;
+  }
+}
+
+.cursor {
+  &.active &__wrapper {
+    background: #2a8ac2;
+  }
+}
+
+.cursor {
+  &.active &__wrapper:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

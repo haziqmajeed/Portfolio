@@ -1,0 +1,47 @@
+/*-------- News --------*/
+
+.news {
+    padding-top: 115px;
+    padding-bottom: 54px;
+    
+    &__wrapper {
+        position: relative;
+    }
+
+    &__button {
+        height: 52px;
+    }
+}
+
+@media (max-width: 1219px) {
+
+    .news {
+        padding-top: 60px;
+    }
+}
+
+@media (max-width: 619px) {
+
+    .news {
+
+        &__title {
+            font-size: 36px;
+        }
+    }
+}
+
+@media (max-width: 479px) {
+
+    .news {
+        padding-bottom: 30px;
+
+        &__title {
+            flex-direction: column;
+        }
+
+        &__button {
+            margin-top: 20px;
+            height: 40px;
+        }
+    }
+}

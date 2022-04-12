@@ -1,0 +1,41 @@
+/*-------- Title --------*/
+
+.title {
+    font-family: $font-pf;
+    font-size: 58px;
+
+    &__cat {
+        font-family: $font-r;
+        margin-bottom: 15px;
+        font-size: 20px;
+        color: #187bcd;
+    }
+}
+
+.title {
+
+    &--center {
+        text-align: center;
+    }
+}
+
+.title {
+
+    &--button {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .title {
+        font-size: 47px;
+
+        &__cat {
+            margin-bottom: 12px;
+            font-size: 18px;
+        }
+    }
+}

@@ -1,0 +1,59 @@
+/*-------- Input-wrapper --------*/
+
+.input-wrapper {
+    
+    &__label {
+        display: block;
+        margin-bottom: 22px;
+        font-family: $font-b;
+        font-size: 15px;
+    }
+
+    &__label--white {
+        color: #ffffff;
+    }
+
+    &__input {
+        width: 100%;
+    }
+}
+
+.input-wrapper {
+
+    &--form {
+        width: 100%;
+    } 
+
+    &--form:nth-child(n+3) {
+        margin-top: 21px;
+    }
+}
+
+.input-wrapper {
+
+    &--50 {
+        width: 49%;
+    }
+}
+
+@media (max-width: 989px) {
+
+    .input-wrapper {
+
+        &__label {
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+    }
+
+    .input-wrapper {
+
+        &--form:nth-child(n+3) {
+            margin-top: 16px;
+        }
+
+        &--form &__input--textarea {
+            height: 80px;
+        }
+    }
+}

@@ -1,0 +1,19 @@
+export { default as chat } from './chat.json';
+export { default as gear } from './gear.json';
+export { default as geo } from './geo.json';
+export { default as goal } from './goal.json';
+export { default as guarantee } from './guarantee.json';
+export { default as handshake } from './handshake.json';
+export { default as layers } from './layers.json';
+export { default as loveCare } from './love-care.json';
+export { default as mail } from './mail.json';
+export { default as marketing } from './marketing.json';
+export { default as pc } from './pc.json';
+export { default as phone } from './phone.json';
+export { default as pin } from './pin.json';
+export { default as pricetag } from './price-tag.json';
+export { default as project } from './project.json';
+export { default as rocket } from './rocket.json';
+export { default as tech } from './technology.json';
+export { default as warehouse } from './warehouse.json';
+
